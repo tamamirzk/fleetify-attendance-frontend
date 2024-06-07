@@ -1,5 +1,10 @@
 import { Inter } from "next/font/google";
-import "./globals.css";
+import Header from "./components/Header";
+import "../../public/css/bootstrap.min.css";
+import "../../public/css/lnr-icon.css";
+import "../../public/css/font-awesome.min.css";
+import "../../public/css/style.css";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,7 +16,34 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <head>
+        <script src="/js/jquery-3.2.1.min.js" type="text/javascript"></script>
+        <script src="/js/popper.min.js" type="text/javascript"></script>
+        <script src="/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="/js/Chart.min.js" type="text/javascript"></script>
+        <script src="/js/chart.js" type="text/javascript"></script>
+        <script src="/plugins/theia-sticky-sidebar/ResizeSensor.js" type="text/javascript"></script>
+        <script src="/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js" type="text/javascript"></script>
+        <script src="/js/script.js" type="text/javascript"></script>
+        <script src="https://dleohr.dreamstechnologies.com/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="8493d93e50e84f2eb9ece403-|49" defer></script>
+      </head>
+
+      <body className={inter.className}>
+        <div className="inner-wrapper">
+          <Header />
+          <div id="loader-wrapper">
+            <div className="loader">
+              <div className="dot"></div>
+              <div className="dot"></div>
+              <div className="dot"></div>
+              <div className="dot"></div>
+              <div className="dot"></div>
+            </div>
+          </div>
+          <main>{children}</main>
+          <div className="sidebar-overlay" id="sidebar_overlay"></div>
+        </div>
+      </body>
     </html>
   );
 }
